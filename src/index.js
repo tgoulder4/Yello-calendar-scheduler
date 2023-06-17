@@ -8,9 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const realtimeTrains = require("realtime-trains-scraper");
+Object.defineProperty(exports, "__esModule", { value: true });
+const realtime_trains_scraper_1 = require("realtime-trains-scraper");
 const data = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield realtimeTrains
+    yield realtime_trains_scraper_1.realtimeTrains
         .getTrains("BRV")
         .then((data) => {
         console.log(data);

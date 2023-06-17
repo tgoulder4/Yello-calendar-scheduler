@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/test.js",
   "scripts": {
-    "start": "node src/test.js",
+    "start": "node src/index.js",
     "watch": "tsc -w",
-    "hotreload": "nodemon src/test.js"
+    "hotreload": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",

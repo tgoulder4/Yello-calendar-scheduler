@@ -1,4 +1,4 @@
-const realtimeTrains = require("realtime-trains-scraper");
+import { realtimeTrains } from "realtime-trains-scraper";
 const data = async () => {
   await realtimeTrains
     .getTrains("BRV")
