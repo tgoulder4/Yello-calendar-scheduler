@@ -18,6 +18,7 @@
     "@types/typescript": "^2.0.0",
     "global": "^4.4.0",
     "overwatch-api": "^0.13.0",
+    "pg": "^8.11.0",
     "realtime-trains-scraper": "^1.0.0",
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4",
