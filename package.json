@@ -2,16 +2,23 @@
   "name": "firstfullstack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/test.js",
   "scripts": {
     "start": "node src/test.js",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "hotreload": "nodemon src/test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mikro-orm/core": "^5.7.12",
+    "@mikro-orm/postgresql": "^5.7.12",
     "@types/jquery": "^3.5.16",
+    "@types/node": "^20.3.1",
     "@types/typescript": "^2.0.0",
+    "global": "^4.4.0",
+    "overwatch-api": "^0.13.0",
+    "realtime-trains-scraper": "^1.0.0",
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4",
     "tsc-watch": "^6.0.4",
