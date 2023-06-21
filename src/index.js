@@ -13,10 +13,14 @@ const core_1 = require("@mikro-orm/core");
 //given that microORM.init returns a promise, set
 //microORM to the variable 'orm'.
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    const orm = yield core_1.MikroORM.init({
-        dbName: "postgres",
-        type: "postgresql",
-    });
-    console.log(orm);
+    try {
+        const orm = yield core_1.MikroORM.init({
+            dbName: "postgres",
+            type: "postgresql",
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
 });
 main();
