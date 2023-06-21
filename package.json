@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "watch": "tsc -w",
-    "hotreload": "nodemon src/index.js"
+    "hotreload": "nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,6 @@
     "@types/node": "^20.3.1",
     "@types/typescript": "^2.0.0",
     "global": "^4.4.0",
-    "overwatch-api": "^0.13.0",
     "pg": "^8.11.0",
     "realtime-trains-scraper": "^1.0.0",
     "ts-node": "^10.9.1",

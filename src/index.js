@@ -9,15 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const realtime_trains_scraper_1 = require("realtime-trains-scraper");
-const data = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield realtime_trains_scraper_1.realtimeTrains
-        .getTrains("BRV")
-        .then((data) => {
-        console.log(data);
-    })
-        .catch((err) => {
-        console.log(err);
+const core_1 = require("@mikro-orm/core");
+//given that microORM.init returns a promise, set
+//microORM to the variable 'orm'.
+const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    const orm = yield core_1.MikroORM.init({
+        dbName: "postgres",
+        type: "postgresql",
     });
+    console.log(orm);
 });
-console.log(data());
+main();
