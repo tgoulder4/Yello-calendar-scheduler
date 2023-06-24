@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/test.js",
   "scripts": {
-    "start": "node src/index.js",
+    "startDev": "cross-env NODE_ENV=development node src/index.js",
+    "startProd": "cross-env NODE_ENV=production node src/index.js",
     "watch": "tsc -w",
     "hotreload": "nodemon ./src/index.js"
   },
@@ -16,6 +17,7 @@
     "@types/jquery": "^3.5.16",
     "@types/node": "^20.3.1",
     "@types/typescript": "^2.0.0",
+    "cross-env": "^7.0.3",
     "global": "^4.4.0",
     "pg": "^8.11.0",
     "realtime-trains-scraper": "^1.0.0",
