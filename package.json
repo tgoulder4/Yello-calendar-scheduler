@@ -7,7 +7,7 @@
     "startDev": "cross-env NODE_ENV=development node src/index.js",
     "startProd": "cross-env NODE_ENV=production node src/index.js",
     "watch": "tsc -w",
-    "hotreload": "nodemon ./src/index.js"
+    "hotreloadDev": "cross-env NODE_ENV=development nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC",
