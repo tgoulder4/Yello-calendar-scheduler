@@ -16,7 +16,6 @@ const main = async () => {
     });
     const newEvent = new Event({
       name: "Lunch with mum",
-      description: "Test mongoose.",
     });
     const mascot = new Mascot({
       lastState: {
