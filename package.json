@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "startDev": "cross-env NODE_ENV=development node src/index.js",
-    "startProd": "cross-env NODE_ENV=production node src/index.js",
+    "startDev": "cross-env NODE_ENV=development node src/server.js",
+    "startProd": "cross-env NODE_ENV=production node src/server.js",
     "watch": "tsc -w",
-    "hotreloadDev": "cross-env NODE_ENV=development nodemon ./src/index.js"
+    "hotreloadDev": "cross-env NODE_ENV=development nodemon ./src/server.js"
   },
   "author": "",
   "license": "ISC",
