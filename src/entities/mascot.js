@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+const { Schema } = require("mongoose");
 
 const mascotSchema = new Schema({
   id: Schema.Types.ObjectId,
@@ -8,4 +7,4 @@ const mascotSchema = new Schema({
     reason: String,
   },
 });
-export default mascotSchema;
+module.exports = mascotSchema;

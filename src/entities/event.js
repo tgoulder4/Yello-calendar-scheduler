@@ -1,14 +1,16 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+const { Schema } = require("mongoose");
 
 const eventSchema = new Schema({
-  id: Schema.Types.ObjectId,
-  name: String,
+  id: { type: Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
   description: String,
   color: String,
-  priority: Number, //an error could arise here, make sure priority is discrete
-  userID: Schema.Types.ObjectId,
-  startTime: Date,
-  endTime: Date,
+  priority: { type: Number, required: true }, //an error could arise here, make sure priority is discrete
+  userID: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  startTime: { type: Date, required: true },
+  endTime: { type: Date, required: true },
 });
-export default eventSchema;
+module.exports = eventSchema;

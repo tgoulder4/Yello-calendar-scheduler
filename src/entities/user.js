@@ -1,11 +1,8 @@
-import mongoose from "mongoose";
-import eventSchema from "./event.js";
-const { Schema } = mongoose;
-
+const { Schema } = require("mongoose");
 const userSchema = new Schema({
-  id: Schema.Types.ObjectId,
-  username: String,
-  password: String,
+  id: { type: Schema.Types.ObjectId, required: true },
+  username: { type: String, required: true },
+  password: { type: String, required: true },
   displayname: String,
   events: [
     {
@@ -13,5 +10,10 @@ const userSchema = new Schema({
       ref: "eventSchema",
     },
   ],
+  mascot: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "mascotSchema",
+  },
 });
-export default userSchema;
+module.exports = userSchema;
