@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 //schemas
-const userSchema = require("../entities/user.js");
-const eventSchema = require("../entities/event.js");
-const mascotSchema = require("../entities/mascot.js");
+const userSchema = require("../models/user.js");
+const eventSchema = require("../models/event.js");
+const mascotSchema = require("../models/mascot.js");
 //create models
 const User = mongoose.model("User", userSchema);
 const Event = mongoose.model("Event", eventSchema);
