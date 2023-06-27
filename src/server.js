@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3500;
 console.log(app);
 app.get("/signup", (req, res) => ctrlSignUp.get());
 app.get("/login", (req, res) => ctrlLogin.get());
-app.get("/:userID/focus", (req, res) => ctrlFocus.get(userID));
+app.get("/:userID/focus", (req, res) => ctrlFocus.get(userID)); //we somehow have to pass in the UserID so it knows who we're talking about?
 app.get("/:userID/createWeek", (req, res) => ctrlCreateWeek.get(userID));
 app.get("/:userID/calendar", (req, res) => ctrlCalendar.get(userID));
 app.get("/:userID/createWeek", (req, res) => ctrlHome.get(userID));
