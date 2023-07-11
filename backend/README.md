@@ -1,2 +1,0 @@
-# Manjo-calendar-scheduler
-We spend too long in procrastination mode, wasting countless hours which could otherwise be spent productively towards our futures. The psychological barrier hindering task completion can be easily overcome with an alternative approach to being productive. This is where I introduce Manjo - your friendly focus companion. Manjo automatically finds the next focus period around your events so you spend 0 cognitive effort making a study timetable.
