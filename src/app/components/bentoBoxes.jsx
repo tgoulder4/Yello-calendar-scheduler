@@ -12,8 +12,18 @@ function BentoBoxes() {
         content={
           <>
             <div className="flex justify-end h-[24rem]">
-              <div className="paper"></div>
-              <div className="phoneFrame"></div>
+              <img
+                src="/assets/Paper.png"
+                className="object-fit"
+                draggable="false"
+                alt=""
+              />
+              <img
+                src="/assets/Phone.svg"
+                className="object-fit"
+                draggable="false"
+                alt=""
+              />
             </div>
           </>
         }
