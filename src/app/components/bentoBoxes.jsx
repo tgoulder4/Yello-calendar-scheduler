@@ -34,23 +34,15 @@ function TwoBoxes({ leftContent, rightContent, split = false }) {
   return (
     <>
       {split ? (
-        <>
-          <section className="w-100 rounded-3xl bg-[#080808]">
-            {leftContent}
-          </section>
-          <section className="w-100 rounded-3xl bg-[#080808]">
-            {rightContent}
-          </section>
-        </>
+        <section>
+          <div className="w-100 rounded-3xl bg-[#080808]">{leftContent}</div>
+          <div className="w-100 rounded-3xl bg-[#080808]">{rightContent}</div>
+        </section>
       ) : (
-        <>
-          <section className="w-100 rounded-l-3xl bg-[#080808]">
-            {leftContent}
-          </section>
-          <section className="w-100 rounded-r-3xl bg-[#080808]">
-            {rightContent}
-          </section>
-        </>
+        <section>
+          <div className="w-100 rounded-l-3xl bg-[#080808]">{leftContent}</div>
+          <div className="w-100 rounded-r-3xl bg-[#080808]">{rightContent}</div>
+        </section>
       )}
     </>
   );
