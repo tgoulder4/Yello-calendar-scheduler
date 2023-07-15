@@ -6,7 +6,7 @@ function BentoBoxes() {
         split={true}
         title="Now entering focus mode."
         subtitle="Let's do more. Together."
-        layout="leftVisual"
+        visualLocation="left"
         visualBackground="wooden-table"
         width={["w-2/3", "w-1/3"]}
         content={
@@ -28,10 +28,10 @@ function BentoBoxes() {
   );
 }
 
-function TextBox({ rounded = "rounded-none", gem, title, subtitle }) {
+function TextBox({ rounded = "rounded-none", gem, title, subtitle, width }) {
   return (
     <div
-      className={`w-full bg-[#080808] flex flex-col gap-3.5 ${rounded} p-[3.125rem]`}
+      className={`w-full bg-[#080808] flex flex-col gap-3.5 ${width} ${rounded} p-[3.125rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
       <h1 className="font-bold text-white text-4xl">{title}</h1>
@@ -43,10 +43,13 @@ function VisualsBox({
   children,
   rounded = "none",
   visualBackground = "[#080808]",
+  width,
 }) {
   //visuals are the box which has the picture in it.
   return (
-    <div className={`w-full bg-${visualBackground} ${rounded}`}>{children}</div>
+    <div className={`w-full bg-${visualBackground} ${width} ${rounded}`}>
+      {children}
+    </div>
   );
 }
 function Section({
@@ -55,20 +58,22 @@ function Section({
   gem,
   split = false,
   content,
-  layout = "rightVisual",
+  visualLocation = "right",
   visualBackground,
   width = ["w-1/2", "w-1/2"],
 }) {
   //i want split to be optional and default to false
   return (
     <>
+      {/* visual left? */}
+      {/* code: children[0].addClass(p-0) else (p-[50px]) */}
       {split ? (
         <section className="flex gap-5">
           {
-            (layout = "leftVisual" ? (
+            (visualLocation = "left" ? (
               <>
                 <VisualsBox
-                  className={`${width[0]}`}
+                  width={`${width[0]}`}
                   visualBackground={visualBackground}
                   rounded="rounded-3xl"
                 >
@@ -79,7 +84,7 @@ function Section({
                   subtitle={subtitle}
                   gem={gem}
                   rounded="rounded-3xl"
-                  className={`${width[1]}`}
+                  width={`${width[1]}`}
                 ></TextBox>
               </>
             ) : (
@@ -89,10 +94,12 @@ function Section({
                   subtitle={subtitle}
                   gem={gem}
                   rounded="rounded-3xl"
+                  width={`${width[0]}`}
                 ></TextBox>
                 <VisualsBox
                   visualBackground={visualBackground}
                   rounded="rounded-3xl"
+                  width={`${width[1]}`}
                 >
                   {content}
                 </VisualsBox>
@@ -101,12 +108,13 @@ function Section({
           }
         </section>
       ) : (
-        (layout = "leftVisual" ? (
+        (visualLocation = "left" ? (
           <section className="flex">
             <VisualsBox
               visualBackground={visualBackground}
               rounded="rounded-l-3xl"
               gem="none"
+              width={`${width[0]}`}
             >
               {content}
             </VisualsBox>
@@ -115,6 +123,7 @@ function Section({
               subtitle={subtitle}
               gem={gem}
               rounded="rounded-r-3xl"
+              width={`${width[1]}`}
             ></TextBox>
           </section>
         ) : (
@@ -124,10 +133,12 @@ function Section({
               subtitle={subtitle}
               gem={gem}
               rounded="rounded-l-3xl"
+              width={`${width[0]}`}
             ></TextBox>
             <VisualsBox
               visualBackground={visualBackground}
               rounded="rounded-r-3xl"
+              width={`${width[1]}`}
             >
               {content}
             </VisualsBox>
