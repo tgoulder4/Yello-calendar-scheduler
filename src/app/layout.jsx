@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="${inter.className} px-[240px] py-[50px] mx-auto min-h-[100vh] min-w-max bg-[color:var(--primaryLight)]">
+      <body className="${inter.className} px-[240px] py-[50px] mx-auto min-h-[100vh] bg-[color:var(--primaryLight)]">
         {/*nav!!!*/}
         <main className="outline outline-offset-2 outline-pink-500 flex flex-col gap-8">
           <nav className="flex justify-between h-8">

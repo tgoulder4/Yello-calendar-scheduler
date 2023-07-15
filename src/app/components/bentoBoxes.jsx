@@ -1,4 +1,10 @@
-//overall returns all the bento boxes
+//DOCS:
+//create two boxes.
+//split = true => The boxes will be separated (split)
+//gem, title, subtitle => The respective elements of the text box
+//visualLocation => The location of the visual box wrt the text box. E.g. =right => TextBox | VisualBox
+//width = ["w-1/2","w-1/2"] => The boxes will fill an equal amount of space
+//content => The content of the content box.
 function BentoBoxes() {
   return (
     <>
@@ -20,7 +26,7 @@ function BentoBoxes() {
               />
               <img
                 src="/assets/Phone.svg"
-                className="object-fit"
+                className="object-fit m-[25px]"
                 draggable="false"
                 alt=""
               />
@@ -28,17 +34,18 @@ function BentoBoxes() {
           </>
         }
       ></Section>
-      {/* <Section
+      <Section
         split={true}
         title="Daily Focus improves wellbeing by 70%."
         subtitle="Manjo helps you spend at least 2 hours a day on task without distractions."
-        layout="rightVisual"
-      ></Section> */}
+        visualLocation="right"
+      ></Section>
+      <Section split={false} mode="singleBox" title="singlebox test"></Section>
     </>
   );
 }
 
-function TextBox({ rounded = "rounded-none", gem, title, subtitle, width }) {
+function TextBox({ rounded = "rounded-3xl", gem, title, subtitle, width }) {
   return (
     <div
       className={`w-full bg-[#080808] flex flex-col gap-3.5 ${width} ${rounded} p-[3.125rem]`}
@@ -51,7 +58,7 @@ function TextBox({ rounded = "rounded-none", gem, title, subtitle, width }) {
 }
 function VisualsBox({
   children,
-  rounded = "none",
+  rounded = "rounded-3xl",
   visualBackground = "[#080808]",
   width,
 }) {
@@ -62,30 +69,67 @@ function VisualsBox({
     </div>
   );
 }
+function SingleBox({
+  gem,
+  title,
+  subtitle,
+  rounded = "rounded-3xl",
+  content = "",
+}) {
+  return (
+    <div className={`flex justify-center items-center ${rounded}`}>
+      {/* content or this below */}
+      {content}
+      {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
+      <h1 className="font-bold text-white text-4xl">{title}</h1>
+      <h2 className="text-lg text-gray-400">{subtitle}</h2>
+    </div>
+  );
+}
+
 function Section({
   title,
   subtitle,
   gem,
   split = false,
-  content,
+  content = "",
   visualLocation = "right",
   visualBackground,
   width = ["w-1/2", "w-1/2"],
+  mode = "twoBoxes",
 }) {
   //i want split to be optional and default to false
   return (
     <>
-      {/* visual left? */}
-      {/* code: children[0].addClass(p-0) else (p-[50px]) */}
-      {split ? (
-        <section className="flex gap-5">
-          {
-            (visualLocation = "left" ? (
+      {/* an absolute mess. needs refactoring:
+      content,title,subtitle,gem is by default "".
+        function Section({
+
+        }){
+            return (
+                one box?
+	                <SingleBox title={title}... >{Content}</SingleBox>
+                :
+                {visualLocation == left?
+	                twoBoxes.swap(a,b=>-1)
+	                widths.swap(as above)
+                    split? borderRadius=3xl : []
+                }
+                <section>{twoBoxes}</section>
+const twoBoxes = [
+<TextBox title={title} subtitle={subtitle}...> </TextBox>
+<VisualBox>{Content}</VisualBox>]
+        }
+
+      */}
+      {mode == "twoBoxes" ? (
+        split ? (
+          <section className="flex gap-5">
+            {visualLocation == "left" ? (
               <>
                 <VisualsBox
                   width={`${width[0]}`}
                   visualBackground={visualBackground}
-                  rounded="rounded-3xl"
                 >
                   {content}
                 </VisualsBox>
@@ -93,7 +137,6 @@ function Section({
                   title={title}
                   subtitle={subtitle}
                   gem={gem}
-                  rounded="rounded-3xl"
                   width={`${width[1]}`}
                 ></TextBox>
               </>
@@ -103,22 +146,18 @@ function Section({
                   title={title}
                   subtitle={subtitle}
                   gem={gem}
-                  rounded="rounded-3xl"
                   width={`${width[0]}`}
                 ></TextBox>
                 <VisualsBox
                   visualBackground={visualBackground}
-                  rounded="rounded-3xl"
                   width={`${width[1]}`}
                 >
                   {content}
                 </VisualsBox>
               </>
-            ))
-          }
-        </section>
-      ) : (
-        (visualLocation = "left" ? (
+            )}
+          </section>
+        ) : visualLocation == "left" ? (
           <section className="flex">
             <VisualsBox
               visualBackground={visualBackground}
@@ -153,9 +192,14 @@ function Section({
               {content}
             </VisualsBox>
           </section>
-        ))
+        )
+      ) : (
+        <section>
+          <SingleBox gem={gem} title={title} subtitle={subtitle}></SingleBox>
+        </section>
       )}
     </>
   );
 }
+
 export default BentoBoxes;
