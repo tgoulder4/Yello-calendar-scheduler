@@ -9,6 +9,8 @@
 //Notes for next:
 //I want the phone to stay in the middle.
 //singleBoxes need to be fixed.
+//display the current time on the phone
+
 function BentoBoxes() {
   return (
     <>
@@ -21,10 +23,10 @@ function BentoBoxes() {
         widths={["w-2/3", "w-1/3"]}
         content={
           <>
-            <div className="flex justify-end h-[21rem]">
+            <div className="flex justify-end">
               <img
                 src="/assets/Paper.png"
-                className="object-fit"
+                className="object-fit rounded-l-3xl"
                 draggable="false"
                 alt=""
               />
@@ -60,14 +62,15 @@ function TextBox({
   title,
   subtitle,
   width,
+  minwidth,
 }) {
   return (
     <div
-      className={`${width} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
+      className={`${width} ${minwidth} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
       <h1 className="font-bold text-white">{title}</h1>
-      <h2 className="text-lg text-gray-400">{subtitle}</h2>
+      <h2 className="text-base text-gray-400">{subtitle}</h2>
     </div>
   );
 }
@@ -99,7 +102,7 @@ function SingleBox({
       {content}
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
       <h1 className="font-bold text-white">{title}</h1>
-      <h2 className="text-lg text-gray-400">{subtitle}</h2>
+      <h2 className="text-base text-gray-400">{subtitle}</h2>
     </div>
   );
 }
@@ -110,6 +113,7 @@ function Section({
   split = false,
   content = "",
   visualBackground,
+  minwidth = "min-w-250px",
   widths = ["w-1/2", "w-1/2"],
   borderRadius = ["rounded-l-3xl", "rounded-r-3xl"],
   orderSwap = false,
@@ -131,6 +135,7 @@ function Section({
       gem={gem}
       borderRadius={borderRadius[0]}
       width={widths[0]}
+      minwidth={minwidth}
     ></TextBox>,
     <VisualsBox
       visualBackground={visualBackground}
@@ -152,7 +157,7 @@ function Section({
   }
   return (
     <>
-      <section className={`flex ${gap}`}>
+      <section className={`flex ${gap} h-[21rem]`}>
         {oneBox ? (
           <SingleBox
             borderRadius={borderRadius}
