@@ -10,6 +10,7 @@
 //I want the phone to stay in the middle.
 //singleBoxes need to be fixed.
 //display the current time on the phone
+import Phone from "./phone";
 function Button({ buttonText }) {
   return (
     <div className="btnContainer flex">
@@ -31,21 +32,17 @@ function BentoBoxes() {
         visualBackground="bg-wooden-table"
         widths={["w-2/3", "w-1/3"]}
         buttonText="Let's go!"
+        overflow="overflow-hidden"
         content={
           <>
             <div className="h-full flex justify-end">
               <img
                 src="/assets/Paper.png"
-                className="object-fit rounded-l-3xl"
+                className="object-scale-down scale-175 top-[28px] left-[-150px] relative max-w-1/2"
                 draggable="false"
                 alt=""
               />
-              <img
-                src="/assets/Phone.svg"
-                className="object-fit m-[25px]"
-                draggable="false"
-                alt=""
-              />
+              <Phone></Phone>;
             </div>
           </>
         }
@@ -78,7 +75,7 @@ function TextBox({
 }) {
   return (
     <div
-      className={`${width} ${minwidth} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
+      className={` ${width} ${minwidth} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
       <h1 className="font-bold text-white text-4xl">{title}</h1>
@@ -95,7 +92,7 @@ function VisualsBox({
 }) {
   //visuals are the box which has the picture in it.
   return (
-    <div className={` ${visualBackground} ${width} ${borderRadius}`}>
+    <div className={`${visualBackground} ${width} ${borderRadius}`}>
       {children}
     </div>
   );
@@ -134,6 +131,7 @@ function Section({
   orderSwap = false,
   oneBox = false,
   buttonText = null,
+  overflow = "",
 }) {
   //so the correct props are generated BEFORE the elements are created with them
   if (orderSwap) {
@@ -174,7 +172,7 @@ function Section({
   }
   return (
     <>
-      <section className={`flex ${gap} h-[25rem]`}>
+      <section className={`flex ${gap} ${overflow}`}>
         {oneBox ? (
           <SingleBox
             borderRadius={borderRadius}

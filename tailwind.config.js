@@ -10,8 +10,15 @@ module.exports = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "wooden-table": "url('/assets/table.jpg')",
+        phone: "url('/assets/phone.svg')",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      scale: {
+        175: "1.75",
+      },
+      maxWidth: {
+        "1/2": "50%",
       },
     },
   },
