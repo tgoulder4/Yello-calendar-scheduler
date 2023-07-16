@@ -45,8 +45,8 @@ function BentoBoxes() {
         widths={["w-3/5", "w-2/5"]}
       ></Section>
       <Section
-        split={false}
         oneBox={true}
+        gem="🎉"
         title="The new you."
         subtitle="Whether you’re studying French, practicing piano or simply having quiet time, Manjo can help you achieve peace of mind."
       ></Section>
@@ -66,7 +66,7 @@ function TextBox({
       className={`${width} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white text-3xl">{title}</h1>
+      <h1 className="font-bold text-white">{title}</h1>
       <h2 className="text-lg text-gray-400">{subtitle}</h2>
     </div>
   );
@@ -79,7 +79,7 @@ function VisualsBox({
 }) {
   //visuals are the box which has the picture in it.
   return (
-    <div className={`w-full ${visualBackground} ${width} ${borderRadius}`}>
+    <div className={` ${visualBackground} ${width} ${borderRadius}`}>
       {children}
     </div>
   );
@@ -98,7 +98,7 @@ function SingleBox({
       {/* content or this below */}
       {content}
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white text-4xl">{title}</h1>
+      <h1 className="font-bold text-white">{title}</h1>
       <h2 className="text-lg text-gray-400">{subtitle}</h2>
     </div>
   );
@@ -154,7 +154,12 @@ function Section({
     <>
       <section className={`flex ${gap}`}>
         {oneBox ? (
-          <SingleBox gem={gem} title={title} subtitle={subtitle}></SingleBox>
+          <SingleBox
+            borderRadius={borderRadius}
+            gem={gem}
+            title={title}
+            subtitle={subtitle}
+          ></SingleBox>
         ) : (
           //there are multiple boxes here
           twoBoxes
