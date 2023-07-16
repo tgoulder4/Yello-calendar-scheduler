@@ -9,6 +9,18 @@
 //Notes for next:
 //I want the phone to stay in the middle.
 //singleBoxes need to be fixed.
+//display the current time on the phone
+import Phone from "./phone";
+function Button({ buttonText }) {
+  return (
+    <div className="btnContainer flex">
+      <button className="btn flex-grow-0 bg-white hover:bg-slate-200 text-black rounded-xl py-2 px-4">
+        {buttonText}
+      </button>
+    </div>
+  );
+}
+
 function BentoBoxes() {
   return (
     <>
@@ -19,21 +31,18 @@ function BentoBoxes() {
         subtitle="Let's do more. Together."
         visualBackground="bg-wooden-table"
         widths={["w-2/3", "w-1/3"]}
+        buttonText="Let's go!"
+        overflow="overflow-hidden"
         content={
           <>
-            <div className="flex justify-end h-[21rem]">
+            <div className="h-full flex justify-end">
               <img
                 src="/assets/Paper.png"
-                className="object-fit"
+                className="object-scale-down scale-175 top-[28px] left-[-150px] relative max-w-1/2"
                 draggable="false"
                 alt=""
               />
-              <img
-                src="/assets/Phone.svg"
-                className="object-fit m-[25px]"
-                draggable="false"
-                alt=""
-              />
+              <Phone></Phone>;
             </div>
           </>
         }
@@ -48,6 +57,7 @@ function BentoBoxes() {
         oneBox={true}
         gem="🎉"
         title="The new you."
+        buttonText="I'm in!"
         subtitle="Whether you’re studying French, practicing piano or simply having quiet time, Manjo can help you achieve peace of mind."
       ></Section>
     </>
@@ -60,14 +70,17 @@ function TextBox({
   title,
   subtitle,
   width,
+  minwidth,
+  buttonText,
 }) {
   return (
     <div
-      className={`${width} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
+      className={` ${width} ${minwidth} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white">{title}</h1>
-      <h2 className="text-lg text-gray-400">{subtitle}</h2>
+      <h1 className="font-bold text-white text-4xl">{title}</h1>
+      <h2 className="text-base text-gray-400">{subtitle}</h2>
+      {buttonText ? <Button buttonText={buttonText}></Button> : <></>}
     </div>
   );
 }
@@ -79,7 +92,7 @@ function VisualsBox({
 }) {
   //visuals are the box which has the picture in it.
   return (
-    <div className={` ${visualBackground} ${width} ${borderRadius}`}>
+    <div className={`${visualBackground} ${width} ${borderRadius}`}>
       {children}
     </div>
   );
@@ -90,16 +103,18 @@ function SingleBox({
   subtitle,
   borderRadius = "rounded-3xl",
   content = "",
+  buttonText,
 }) {
   return (
     <div
-      className={`flex flex-col bg-[#080808] w-full p-[2.375rem] justify-center items-center ${borderRadius}`}
+      className={`flex flex-col gap-[0.94rem] bg-[#080808] w-full p-[2.375rem] justify-center items-center ${borderRadius}`}
     >
       {/* content or this below */}
       {content}
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white">{title}</h1>
-      <h2 className="text-lg text-gray-400">{subtitle}</h2>
+      <h1 className="font-bold text-white text-center text-4xl">{title}</h1>
+      <h2 className="text-base text-gray-400 text-center">{subtitle}</h2>
+      {buttonText ? <Button buttonText={buttonText}></Button> : <></>}
     </div>
   );
 }
@@ -110,10 +125,13 @@ function Section({
   split = false,
   content = "",
   visualBackground,
+  minwidth = "min-w-250px",
   widths = ["w-1/2", "w-1/2"],
   borderRadius = ["rounded-l-3xl", "rounded-r-3xl"],
   orderSwap = false,
   oneBox = false,
+  buttonText = null,
+  overflow = "",
 }) {
   //so the correct props are generated BEFORE the elements are created with them
   if (orderSwap) {
@@ -131,6 +149,8 @@ function Section({
       gem={gem}
       borderRadius={borderRadius[0]}
       width={widths[0]}
+      minwidth={minwidth}
+      buttonText={buttonText}
     ></TextBox>,
     <VisualsBox
       visualBackground={visualBackground}
@@ -152,13 +172,14 @@ function Section({
   }
   return (
     <>
-      <section className={`flex ${gap}`}>
+      <section className={`flex ${gap} ${overflow}`}>
         {oneBox ? (
           <SingleBox
             borderRadius={borderRadius}
             gem={gem}
             title={title}
             subtitle={subtitle}
+            buttonText={buttonText}
           ></SingleBox>
         ) : (
           //there are multiple boxes here

@@ -12,10 +12,11 @@
   font-family: "Inter", sans-serif;
 }
 h1 {
-  line-height: 1.2;
-  font-weight: 700;
   letter-spacing: -0.018em;
-  font-size: 1.75rem;
+}
+h1,
+h2 {
+  max-width: 280px;
 }
 body {
   min-height: 100vh;
