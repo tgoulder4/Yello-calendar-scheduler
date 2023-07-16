@@ -1,7 +1,6 @@
 import "./globals.css";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
-
 export const metadata = {
   title: "Manjo",
   description: "Your focus companion",

@@ -11,15 +11,8 @@
 //singleBoxes need to be fixed.
 //display the current time on the phone
 import Phone from "./phone";
-function Button({ buttonText }) {
-  return (
-    <div className="btnContainer flex">
-      <button className="btn flex-grow-0 bg-white hover:bg-slate-200 text-black rounded-xl py-2 px-4">
-        {buttonText}
-      </button>
-    </div>
-  );
-}
+import Button from "./button";
+import CalendarEvent from "./calendarEvent";
 
 function BentoBoxes() {
   return (
@@ -32,7 +25,6 @@ function BentoBoxes() {
         visualBackground="bg-wooden-table"
         widths={["w-2/3", "w-1/3"]}
         buttonText="Let's go!"
-        overflow="overflow-hidden"
         content={
           <>
             <div className="h-full flex justify-end">
@@ -42,16 +34,33 @@ function BentoBoxes() {
                 draggable="false"
                 alt=""
               />
-              <Phone></Phone>;
+              <Phone></Phone>
             </div>
           </>
         }
       ></Section>
       <Section
         split={true}
+        height="h-[21rem]"
         title="Daily Focus improves wellbeing by 70%."
         subtitle="Manjo helps you spend at least 2 hours a day on task without distractions."
         widths={["w-3/5", "w-2/5"]}
+        content={
+          <div className="flex justify-end pl-[2.375rem] pt-[2.375rem] pb-[2.375rem] gap-[20px] h-full">
+            <div className="flex flex-col justify-between">
+              <p className="text-[#4A4A4A]">11:00</p>
+              <p className="text-[#4A4A4A]">12:00</p>
+              <p className="text-[#4A4A4A]">13:00</p>
+              <p className="text-[#4A4A4A]">14:00</p>
+              <p className="text-[#4A4A4A]">15:00</p>
+            </div>
+            <div className="flex w-full flex-col gap-3 justify-between">
+              <CalendarEvent title="Lunch" />
+              <CalendarEvent focus={true} />
+              <CalendarEvent title="Meeting with Caroline" />
+            </div>
+          </div>
+        }
       ></Section>
       <Section
         oneBox={true}
@@ -78,9 +87,19 @@ function TextBox({
       className={` ${width} ${minwidth} bg-[#080808] flex flex-col gap-3.5 ${borderRadius} p-[2.375rem]`}
     >
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white text-4xl">{title}</h1>
-      <h2 className="text-base text-gray-400">{subtitle}</h2>
-      {buttonText ? <Button buttonText={buttonText}></Button> : <></>}
+      <div className="flex flex-col gap-[0.5rem]">
+        <h1 className="font-bold text-white text-4xl">{title}</h1>
+        <h2 className="text-base text-gray-400 ">{subtitle}</h2>
+      </div>
+      {buttonText ? (
+        <Button
+          paddingX="px-4"
+          paddingY="py-2"
+          buttonText={buttonText}
+        ></Button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -92,7 +111,9 @@ function VisualsBox({
 }) {
   //visuals are the box which has the picture in it.
   return (
-    <div className={`${visualBackground} ${width} ${borderRadius}`}>
+    <div
+      className={`${visualBackground} overflow-hidden ${width} ${borderRadius}`}
+    >
       {children}
     </div>
   );
@@ -112,9 +133,19 @@ function SingleBox({
       {/* content or this below */}
       {content}
       {gem ? <h1 className="text-5xl">{gem}</h1> : <></>}
-      <h1 className="font-bold text-white text-center text-4xl">{title}</h1>
-      <h2 className="text-base text-gray-400 text-center">{subtitle}</h2>
-      {buttonText ? <Button buttonText={buttonText}></Button> : <></>}
+      <div className="flex flex-col gap-[0.5rem]">
+        <h1 className="font-bold text-white text-center text-4xl">{title}</h1>
+        <h2 className="text-base text-gray-400 text-center">{subtitle}</h2>
+      </div>
+      {buttonText ? (
+        <Button
+          paddingX="px-4"
+          paddingY="py-2"
+          buttonText={buttonText}
+        ></Button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -131,7 +162,7 @@ function Section({
   orderSwap = false,
   oneBox = false,
   buttonText = null,
-  overflow = "",
+  height = "",
 }) {
   //so the correct props are generated BEFORE the elements are created with them
   if (orderSwap) {
@@ -172,7 +203,7 @@ function Section({
   }
   return (
     <>
-      <section className={`flex ${gap} ${overflow}`}>
+      <section className={`flex ${height} ${gap}`}>
         {oneBox ? (
           <SingleBox
             borderRadius={borderRadius}
