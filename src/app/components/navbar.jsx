@@ -16,8 +16,7 @@ function NavBar() {
           paddingY="py-[5px]"
           buttonText="Login"
           bg="bg-black"
-          bgHover="hover:bg-[#000000]"
-          stroke="stroke-[#A8A8A8]"
+          bgHover="hover:bg-[#3a3a3a]"
           textColor="text-white"
           textWeight="font-medium"
         ></Button>
