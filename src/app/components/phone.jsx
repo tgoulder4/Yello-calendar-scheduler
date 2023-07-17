@@ -11,7 +11,10 @@ function Phone() {
     <>
       <div className="phoneContainer relative m-[30px]">
         <p className="absolute flex flex-col w-full h-full top-[-20%] font-black text-4xl items-center text-[#3B321A] justify-center">
-          {`${date.getHours()}:${date.getMinutes()}`}
+          {`${date.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}`}
         </p>
         <img src="/assets/phone.svg" draggable="false" alt="" />
       </div>
