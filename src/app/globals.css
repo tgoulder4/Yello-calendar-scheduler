@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+/*1200px is the break to mobile*/
 :root {
   --primaryLight: #171717;
   --horizPadding: 180px;

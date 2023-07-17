@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: { max: "1200px" },
+        // @media (max-width:1200px) {...}
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "wooden-table": "url('/assets/table.jpg')",

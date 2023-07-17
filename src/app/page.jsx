@@ -190,7 +190,7 @@ function Section({
   }
   return (
     <>
-      <section className={`flex ${height} ${gap}`}>
+      <section className={`flex mobile:flex-col ${height} ${gap}`}>
         {oneBox ? (
           <SingleBox
             borderRadius={borderRadius}
