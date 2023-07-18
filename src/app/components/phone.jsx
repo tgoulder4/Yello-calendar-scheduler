@@ -14,6 +14,7 @@ function Phone() {
           {`${date.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
+            hourCycle: "h24",
           })}`}
         </p>
         <img src="/assets/phone.svg" draggable="false" alt="" />

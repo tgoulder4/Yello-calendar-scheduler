@@ -44,7 +44,7 @@ export default function Home() {
             <div className="flex w-full flex-col gap-3 justify-between">
               <CalendarEvent title="Lunch" />
               <CalendarEvent focus={true} />
-              <CalendarEvent title="Meeting with Caroline" />
+              <CalendarEvent title="Meeting with Tye" />
             </div>
           </div>
         }
